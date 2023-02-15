@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->mediumText("description");
-            $table->string("img_cover");
-            $table->string("github_link");
+            $table->string("img_cover")->default("projects/noImg.jpg");
+            $table->string("github_link")->nullable();
             $table->timestamps();
         });
     }

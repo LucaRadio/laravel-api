@@ -52,10 +52,11 @@ class ProjectController extends Controller
         $data = $request->validated();
         if (key_exists('img_cover', $data)) {
             $path = Storage::put('projects', $data['img_cover']);
+        } else {
+            $data['img_cover'] = "projects/noImg.jpg";
         };
         $project->create([
             ...$data,
-            "img_cover" => $path ?? ""
         ])->technologies()->sync($data['technologies'] ?? []);
         return redirect()->route('projects.index');
     }
@@ -121,9 +122,16 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
+        $projects = Project::all();
+
         $project = Project::findOrfail($id);
 
-        Storage::delete($project->img_cover);
+        foreach ($projects as $singleProject) {
+            if (!$singleProject->img_cover === "projects/noImg.jpg") {
+                Storage::delete($project->img_cover);
+            } else {
+            }
+        }
 
         $project->technologies()->detach();
 

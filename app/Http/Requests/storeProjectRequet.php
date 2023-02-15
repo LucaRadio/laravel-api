@@ -31,7 +31,7 @@ class storeProjectRequet extends FormRequest
         return [
             "name" => "required|string|max:255|min:1",
             "description" => "required|string",
-            "img_cover" => 'nullable',
+            "img_cover" => "nullable",
             "github_link" => "required|url",
             "type_id" => "nullable|exists:types,id",
             "technologies" => "nullable|exists:technologies,id"

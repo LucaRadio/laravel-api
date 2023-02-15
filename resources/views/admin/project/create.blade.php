@@ -3,7 +3,6 @@
     <div class="row justify-content-center p-5">
         <div class="col-6 bg-dark p-3 rounded-3 text-white">
             <h2>Create project compiling form below</h2>
-            @dump($errors->all());
 
             <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

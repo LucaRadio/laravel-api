@@ -4,6 +4,7 @@
 
         <div class="jumbotron p-5 mb-4 rounded-3 ">
             <h1>PortFolio</h1>
+            <h3 class="text-danger">Don't forget to seeding database for visualize some random projects </h3>
             <p class="fs-5">Here's my projects list</p>
             @if (Auth::user())
                 <div class="text-center">
