@@ -8,15 +8,21 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $projects = Project::paginate();
+
+        if ($request->input('last6')) {
+            $projects = Project::orderBy('created_at', 'DESC')->limit(6)->get();
+        } else {
+            $projects = Project::paginate(16);
+        };
         return response()->json($projects);
     }
 
     public function show(Project $project)
     {
+        $project->load('type', 'technologies');
         return response()->json($project);
     }
 }

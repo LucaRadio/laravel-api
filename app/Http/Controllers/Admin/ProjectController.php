@@ -54,9 +54,12 @@ class ProjectController extends Controller
             $path = Storage::put('projects', $data['img_cover']);
         } else {
             $data['img_cover'] = "projects/noImg.jpg";
+            $path = $data['img_cover'];
         };
         $project->create([
             ...$data,
+            'img_cover' => $path
+
         ])->technologies()->sync($data['technologies'] ?? []);
         return redirect()->route('projects.index');
     }
