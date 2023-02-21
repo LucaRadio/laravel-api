@@ -12,15 +12,17 @@
                                 <thead>
                                     <tr>
 
-                                        @foreach ($keys as $key)
-                                            <th>{{ ucFirst($key) }}</th>
-                                        @endforeach
+                                        <th>Message Nr.</th>
+                                        <th>From</th>
+                                        <th>E-Mail</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($messages as $message)
                                         <tr>
+
 
 
                                             <td>
@@ -33,38 +35,29 @@
                                                 {{ $message->email }}
                                             </td>
                                             <td>
-                                                {{ $message->message }}
-                                            </td>
-                                            <td>
-                                                {{ date_format($message->created_at, 'M-d') }}
-                                                <br>
-                                                {{ date_format($message->created_at, 'H:i') }}
-                                            </td>
-                                            <td>
-                                                {{ date_format($message->updated_at, 'M-d') }}
-                                                <br>
-                                                {{ date_format($message->updated_at, 'H:i') }}
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('contact.destroy', $message->id) }}" method="POST">
+                                                <form class="d-inline-block"
+                                                    action="{{ route('contact.destroy', $message->id) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger" type="submit">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </form>
+                                                <a class="h-100 btn btn-warning"
+                                                    href="{{ route('contact.show', $message->id) }}">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
 
                                             </td>
                                         </tr>
-                                    @endforeach
+
                                 </tbody>
-
-
                             </table>
-                        @else
-                            <div class="alert alert-info">
-                                There aren't messages on pending. Great Work!
-                            </div>
+                        @endforeach
+                    @else
+                        <div class="alert alert-info">
+                            There aren't messages on pending. Great Work!
+                        </div>
                         @endif
                     </div>
                 </div>

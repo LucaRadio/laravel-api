@@ -54,9 +54,11 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show($id)
     {
-        return view('admin.message.show', compact('message'));
+        $message = Message::findOrfail($id);
+        $keys = array_keys($message->toArray());
+        return view('admin.message.show', compact('message', 'keys'));
     }
 
     /**
