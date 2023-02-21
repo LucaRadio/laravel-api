@@ -50,6 +50,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('admin/projects') }}">{{ __('Projects') }}</a>
                         </li>
+                        @if (Auth::user())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('admin/contact') }}">{{ __('Messages') }}</a>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

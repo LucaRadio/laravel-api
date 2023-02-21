@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
@@ -27,6 +28,7 @@ Route::get('/', function () {
 });
 
 Route::resource("admin/projects", ProjectController::class);
+Route::resource("admin/contact", MessageController::class);
 Route::resource("admin/type", TypeController::class);
 Route::resource("admin/technology", TechnologyController::class);
 
