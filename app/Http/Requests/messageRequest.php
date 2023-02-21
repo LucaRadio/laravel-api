@@ -26,7 +26,8 @@ class messageRequest extends FormRequest
         return [
             "name" => 'nullable|string|max:255',
             "email" => 'required|email',
-            "message" => 'required'
+            "message" => 'required',
+            'attachment' => 'nullable|image'
         ];
     }
 }

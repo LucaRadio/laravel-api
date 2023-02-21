@@ -55,6 +55,10 @@
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
+                                        <a target="_blank" class="btn btn-warning"
+                                            href="{{ asset('storage/' . $message->attachment) }}">
+                                            <i class="fa-solid fa-paperclip"></i>
+                                        </a>
 
                                     </td>
                                 </tr>
